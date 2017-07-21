@@ -1,4 +1,3 @@
-import prob3
 
 def is_palindrome(arg):
 	arg = str(arg)
@@ -9,20 +8,39 @@ def is_palindrome(arg):
 	else:
 		return False 
 
+
+def reverse(num):
+	reverse = 0
+	while num > 0:
+		reverse = 10*reverse + num % 10
+		num = num/10
+	return reverse
+
+# def is_palindrome(num):
+# 	return num == reverse(num)
+
+def is_factorizable(num):
+	factor1 = 999
+	while not num % factor1 == 0:
+		factor1 -= 1
+	factor2 = num/factor1
+	if factor2 < 1000 and factor2 > 100:
+		return True
+	else:
+		return False
+	
+
+	
+	
 for i in range(999999,100001,-1):
 	if is_palindrome(i):
-		print i
+		if is_factorizable(i):
+			print i
+			break
 
-def length(num):
-	return len(str(num))
-
-def max_factor(num):
-	factor1 = 1
-	factor2 = num
-	while(not length(factor1) == 3 && length(
-	
-	
-
+#my solution is better in terms of cheking for is_palindrome 
+# mine has no extra checks and goes from top to low and stops 
+# after finding the maximum
 
 
 
