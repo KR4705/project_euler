@@ -1,29 +1,45 @@
-import prob3
+import time
 
-
-# too many iterations 
-# needs better method
-def no_divisors(num,prime):
-	if num < prime:
-		return 1
-	if num == prime:
-		# print prime,1
-		return 2
+# this no_divisiors is not exactly number of divisors of num
+# this is made for this program 
+# this omits one 2 from the factors because n*(n+1)/2
+# assuming one of n and n+1 is divisible by 2
+# cheated on this problem
+def no_divisors(num):
 	power = 0
-	while num % prime == 0:
+	if num % 2 == 0: 
+		num = num/2
+	divisors = 1
+	while not num & 1:
 		power += 1
-		num = num/prime
-	# print prime,power
-	return (power + 1)*no_divisors(num,prob3.next_prime(prime))
+		num /= 2
+	divisors = divisors * (power + 1)
+	p = 3
+	while num != 1:
+		power = 0
+		while num % p == 0:
+			power += 1
+			num /= p
+		divisors = divisors * (power + 1)
+		p += 2
+	return divisors
 
+# efficient way of looping though for divisors 
+# not by finding next prime but realizing that
+# all primes below it are already covered 
+# because of the loop from below to top
+# 
 
-i = 9000
-divisors = 1
-while(divisors < 500):
-	number = i * (i+1) / 2
-	divisors = no_divisors(number,2)
-	i += 1
-	print i,divisors 
-print number
+def find_index(num):
+	n = 1
+	lnum , rnum = no_divisors(n),no_divisors(n+1)
+	while lnum * rnum < num:
+		n += 1
+		lnum,rnum = rnum,no_divisors(n+1)
+	return n
+start = time.time()
+n = find_index(500)
+triangle =  n*(n+1)/2
+elapsed = time.time() - start
+print "result %s returned in %s seconds." % (triangle,elapsed)
 
-# print no_divisors(10000,2)
