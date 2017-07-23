@@ -1,3 +1,6 @@
+import time
+
+start = time.time()
 numbers_string = """
 37107287533902102798797998220837590246510135740250
 46376937677490009712648124896970078050417018260538
@@ -128,8 +131,14 @@ while carry > 10:
 digits.append(carry)
 
 # printing
-for i in range(1,11):
-	print digits[-i],
+n = 0
+for i in reversed(digits):
+	n += 1
+	print i,
+	if n == 10:
+		break  
+runtime = time.time() - start
+print "runtime: %rms" % (runtime*1000)
  
 
 

@@ -1,3 +1,7 @@
+import time
+#this is my palindrome works much faster than the other one
+# which uses the reverse
+# reverse uses calculations while mine just used the list.
 
 def is_palindrome(arg):
 	arg = str(arg)
@@ -8,7 +12,7 @@ def is_palindrome(arg):
 	else:
 		return False 
 
-
+# ununsed 
 def reverse(num):
 	reverse = 0
 	while num > 0:
@@ -28,14 +32,12 @@ def is_factorizable(num):
 		return True
 	else:
 		return False
-	
-
-	
-	
+start = time.time()		
 for i in range(999999,100001,-1):
 	if is_palindrome(i):
 		if is_factorizable(i):
-			print i
+			runtime = time.time() - start
+			print i,"in %r" % runtime
 			break
 
 #my solution is better in terms of cheking for is_palindrome 

@@ -1,3 +1,5 @@
+import time
+
 number_str_default = """
 73167176531330624919225119674426574742355349194934
 96983520312774506326239578318016984801869478851843
@@ -37,22 +39,22 @@ def jump(index):
 	return 0
 
 def mult(index):
-
 	total = 1
 	for i in range(13):
 		total *= int(number_str[index+i])
 	return total
 
+start = time.time()
 index = 0
 maximum = 1
 while index < 988:
-	print index
 	if jump(index) != 0:
 		index += jump(index) 
 	else : 
 		if mult(index) > maximum:
 			maximum = mult(index)
 		index = index + 1
-print maximum
+runtime = time.time() - start
+print maximum,"runtime: %rms" % (runtime*1000)
 
 

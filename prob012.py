@@ -40,6 +40,6 @@ def find_index(num):
 start = time.time()
 n = find_index(500)
 triangle =  n*(n+1)/2
-elapsed = time.time() - start
-print "result %s returned in %s seconds." % (triangle,elapsed)
+runtime = time.time() - start
+print triangle,"runtime: %rs" % runtime
 
