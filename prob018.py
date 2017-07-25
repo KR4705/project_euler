@@ -1,5 +1,5 @@
 import time
-
+start = time.time()
 # using recurssion
 input_string="""
 75
@@ -32,10 +32,6 @@ for row in string_array:
 
 # deleting string_array
 del string_array
-# now array has the input as numbers in double lists
-# printing array neatly
-# for row in array:
-# 	print row
 
 # initializing path_array which stores the path value of each node
 path_array = []
@@ -43,20 +39,20 @@ for row in array:
 	path_array.append([])
 	for num in row:
 		path_array[-1].append(None)
-path_array.pop(-1)
 
 
-row_end = len(array) - 2
+row_end = len(array) - 1
 def path_sum(i,j):
-	if i == row_end:
-		path = max(array[i+1][j],array[i+1][j+1])
+	if i == row_end - 1:
+		path = array[i][j] + max(array[i+1][j],array[i+1][j+1])
 		path_array[i][j] = path
 		return path
 	elif path_array[i][j] == None:
 		path = array[i][j] + max(path_sum(i+1,j),path_sum(i+1,j+1))
 		path_array[i][j] = path
 		return path
+	else:
+		return path_array[i][j]
 path_sum(0,0)
-
-for row in path_array:
-	print row
+runtime = time.time() - start
+print path_array[0][0] , "runtime: %rms" % (runtime*1000) 
