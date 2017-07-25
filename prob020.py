@@ -13,6 +13,6 @@ answer = 0
 while num > 10:
 	answer,num = answer+num%10,num/10
 answer += num
-
-print answer
+runtime = time.time() - start
+print answer,"runtime: %rms" % (runtime*1000)
 

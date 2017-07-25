@@ -35,7 +35,7 @@ for i in range(len(sum_factors)):
 
 
 runtime = time.time() - start
-print answer , runtime
+print answer , "runtime:%r" % runtime
 
 
 
