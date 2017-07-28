@@ -10,12 +10,17 @@ sum_factors[1] = 0
 sum_factors[2] = 1
 
 def sum_of_factors(n):	
+
+def sum_of_factors(n):	
 	total = 1
-	for factor in range(2,n):
+	for factor in range(2,int(n**(0.5))+1):
 		if n % factor == 0: 
-			total += factor 
+			total += factor
+			factor_alt = n / factor
+			if not factor_alt == factor:
+				total += factor_alt  
 	sum_factors[n] = total
-	return total
+	return total	
 # filling up the array 
 for index in range(3,10001):
 	sum_of_factors(index)
