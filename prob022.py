@@ -1,6 +1,6 @@
 import time
 start = time.time()
-names_str = open("p022_names.txt").read()
+names_str = open("prob022_names.txt").read()
 names_list = names_str.split("\",\"")
 names_list[0] = names_list[0][1:]
 names_list[-1] = names_list[-1][0:-1] 
