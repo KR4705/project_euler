@@ -1,6 +1,5 @@
 # brute force
 def is_pentagonal(num):
-
 	x = (1+(1+24*num)**0.5)/6
 	return x == int(x)
 
