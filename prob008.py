@@ -23,14 +23,13 @@ number_str_default = """
 71636269561882670428252483600823257530420752963450
 """
 
-number_str = number_str_default.replace("\n","")
-
+number_str = number_str_default.replace("\n","") # removing newline
 
 # takes an index gives out 0 if no zeroes in the next 13 digits 
 # including the index 
 # else returns a number n where index + n is the index where we should go to
 # for finding our next index
-def jump(index):
+def jump(index): # this function for optimizing the presence of 0s
 	count = 0
 	while(count < 13): 
 		if number_str[index+count] == 0: 
@@ -47,7 +46,7 @@ def mult(index):
 start = time.time()
 index = 0
 maximum = 1
-while index < 988:
+while index < 988: # 988 because our mult checks for the next 13 elements
 	if jump(index) != 0:
 		index += jump(index) 
 	else : 
